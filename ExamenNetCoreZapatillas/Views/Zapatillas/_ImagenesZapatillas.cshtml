@@ -1,0 +1,39 @@
+﻿@model ImagenZapatilla
+
+@{
+    Zapatilla zapas = ViewData["ZAPAS"] as Zapatilla;
+}
+
+<h3 class="text-primary">
+    Imagen @ViewData["POSICION"] de @ViewData["ULTIMO"]
+</h3>
+
+<ul class="list-group list-group-horizontal">
+    <li class="list-group-item">
+        <button onclick="loadImagenesZapas(1, @Model.IdProducto)" class="btn">
+            Primero
+        </button>
+    </li>
+    <li class="list-group-item">
+        <button onclick="loadImagenesZapas(@ViewData["ANTERIOR"], @Model.IdProducto)" class="btn">
+            Anterior
+        </button>
+    </li>
+    <li class="list-group-item">
+        <button onclick="loadImagenesZapas(@ViewData["SIGUIENTE"], @Model.IdProducto)" class="btn">
+            Siguiente
+        </button>
+    </li>
+    <li class="list-group-item">
+        <button onclick="loadImagenesZapas(@ViewData["ULTIMO"], @Model.IdProducto)" class="btn">
+            Último
+        </button>
+    </li>
+</ul>
+
+
+    <ul class="list-group">
+        <li class="list-group-item">
+           <img src="@Model.Imagen" width="300" height="300" />
+        </li>
+    </ul>

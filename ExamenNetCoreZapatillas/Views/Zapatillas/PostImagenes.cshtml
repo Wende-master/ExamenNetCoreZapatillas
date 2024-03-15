@@ -1,0 +1,48 @@
+﻿@model List<Zapatilla>
+
+@{
+    ViewData["Title"] = "Post Imagenes";
+}
+
+<h1>Post Imagenes</h1>
+
+<h4>Imagen Zapatilla</h4>
+
+<button id="btnCajaImagen" class="btn btn-warning">Más imágenes</button>
+
+<hr />
+<div class="container">
+    <form method="post">
+        <div class="row">
+            <div class="col-6">
+                <select class="mb-3 form-select" name="idzapatilla">
+                    @foreach (Zapatilla zapatilla in Model)
+                    {
+                        <option value="@zapatilla.IdProducto">@zapatilla.Nombre</option>
+                    }
+                </select>
+            </div>
+            <div class="col-6">
+                <button class="btn btn-secondary w-100">
+                    Insertar imágenes
+                </button>
+            </div>
+        </div>
+        <input type="text" name="imagenes" class="form-control" />
+    </form>
+</div>
+
+
+@section Scripts {
+    <script>
+        $(function () {
+            $("#btnCajaImagen").on("click", function () {
+                let cajaIdImagen = $("<input>").attr("type", "text").attr("name", "imagenes")
+                    .addClass("form-control mt-3");
+                $("form").append(cajaIdImagen);
+            });
+        });
+    </script>
+}
+
+
